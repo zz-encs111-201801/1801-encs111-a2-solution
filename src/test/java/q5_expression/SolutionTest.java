@@ -64,12 +64,12 @@ class SolutionTest {
 
     @Test
     void case10() {
-        assertEquals(7, solution.evaluate("2 * 2 + 1 + 2 * 2 + 2"));
+        assertEquals(11, solution.evaluate("2 * 2 + 1 + 2 * 2 + 2"));
     }
 
 
     @Test
     void case11() {
-        assertEquals(7, solution.evaluate("2 *2 + 1 + 2* 2+2"));
+        assertEquals(11, solution.evaluate("2 *2 + 1 + 2* 2+2"));
     }
 }

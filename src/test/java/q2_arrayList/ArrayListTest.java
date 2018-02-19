@@ -108,13 +108,13 @@ class ArrayListTest {
         @Test
         void standardCase3() {
             prepareStandard();
-            assertEquals(4, standard.get(5));
+            assertEquals(4, standard.get(4));
         }
 
         @Test
         void standardCase4() {
             prepareStandard();
-            assertEquals(-1, standard.get(6));
+            assertEquals(-1, standard.get(5));
         }
 
 
