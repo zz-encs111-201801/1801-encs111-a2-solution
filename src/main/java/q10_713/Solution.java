@@ -8,13 +8,110 @@ package q10_713;
  */
 
 public class Solution {
+
+    //  Mark - Context
+
+    private int[] nums;
+    private int limit;
+
+    private int value;
+    private int count;
+
     public int numSubarrayProductLessThanK(int[] nums, int k) {
-        return 0;
+
+        // base cases
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        if (k < 2) {
+            return 0;
+        }
+
+        // init
+        this.nums = nums;
+        limit = k;
+        value = nums[0];
+
+        start = 0;
+        end = 1;
+
+        // core
+        while (true) {
+            seekEnd();
+            if (inLimit()) {
+                break;
+            }
+            seekStart();
+        }
+
+        return count;
+    }
+
+    //  Mark - Seek
+
+    private int start;
+    private int end;
+
+    private void seekStart() {
+        while (true) {
+            if (inLimit()) {
+                return;
+            }
+
+            if (canMoveStart()) {
+                moveStart();
+            } else {
+                break;
+            }
+        }
+    }
+
+    private void seekEnd() {
+        while (true) {
+            if (!inLimit()) {
+                return;
+            }
+
+            collect();
+
+            if (canMoveEnd()) {
+                moveEnd();
+            } else {
+                break;
+            }
+        }
+    }
+
+    private boolean canMoveStart() {
+        return start < nums.length - 1;
+    }
+
+    private void moveStart() {
+        value /= nums[start];
+        start += 1;
+    }
+
+    private boolean canMoveEnd() {
+        return end < nums.length;
+    }
+
+    private void moveEnd(){
+        value *= nums[end];
+        end += 1;
+    }
+
+    private void collect() {
+        count += end - start;
+    }
+
+    private boolean inLimit() {
+        return value < limit;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] arr = {2, 5, 10};
-        System.out.println(solution.numSubarrayProductLessThanK(arr, 10));
+        int[] arr = {10, 5, 2, 6};
+        System.out.println(solution.numSubarrayProductLessThanK(arr, 100));
     }
 }

@@ -9,7 +9,18 @@ package q8_779;
 
 public class Solution {
     public int kthGrammar(int N, int K) {
-        return 0;
+        if ( N == 1 ) {
+            return 0;
+        }
+
+        int length = (int)Math.pow(2, N - 1);
+
+        if (K > length / 2)  {
+            int result = kthGrammar(N - 1, K - length / 2);
+            return result == 0 ? 1 : 0;
+        } else {
+            return kthGrammar(N - 1, K);
+        }
     }
 
     public static void main(String[] args) {
